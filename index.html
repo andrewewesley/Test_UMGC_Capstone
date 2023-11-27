@@ -1,0 +1,98 @@
+<!--
+Matthew Hendrix
+HTML Doc for Weather App Capstone
+CAO: 26 Nov 23
+-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>UMGC Weather App</title>
+		<link rel="stylesheet" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+        
+    	<label class="switch">
+        	<input type="checkbox" id="toggleTemperature">
+        	<span class="slider round"></span>
+        	<span class="label-c">°C</span>
+        	<span class="label-f">°F</span>
+    	</label>
+    	
+    	<div class="header">
+    		<input class="city-input" type="text" placeholder="Search for City">
+    		<button class="search-btn">
+        		<img src="./Search_icon.png" alt="Search Icon"/>
+    		</button>
+    		<button class="location-btn">
+        		<img src="./Location_Icon.png" alt="Location Icon"/>
+    		</button>
+		</div>
+
+		<div class="container">
+            <div class="left-column">
+                <div class="top-block">
+                    <h4 id="currentDate">____-__-__</h4>
+                    <h1 id="cityName">______,__</h1>
+                </div>
+                <div class="bottom-block">
+                    <div class="bottom-details">
+                        <h4>Temp: ____°F</h4>
+                        <h4>Wind: ____ mph</h4>
+                        <h4>Humidity: __%</h4>
+                    </div>
+                </div>
+            </div>
+
+                <div class="days-forecast">
+                    <h2>7-Day Forecast</h2>
+                    <ul class="weather-cards">
+                        <li class="card">
+                            <h3>(_____)</h3>
+                            <h4>Temp: ____°F</h4>
+                            <h4>Wind: ____ mph</h4>
+                            <h4>Humidity: __%</h4>
+                        </li>
+                        <li class="card">
+                            <h3>(_____)</h3>
+                            <h4>Temp: ____°F</h4>
+                            <h4>Wind: ____ mph</h4>
+                            <h4>Humidity: __%</h4>
+                        </li>
+                        <li class="card">
+                            <h3>(_____)</h3>   
+                            <h4>Temp: ____°F</h4>
+                            <h4>Wind: ____ mph</h4>
+                            <h4>Humidity: __%</h4>
+                        </li>
+                        <li class="card">
+                            <h3>(_____)</h3>
+                            <h4>Temp: ____°F</h4>
+                            <h4>Wind: ____ mph</h4>
+                            <h4>Humidity: __%</h4>
+                        </li><li class="card">
+                            <h3>(_____)</h3>
+                            <h4>Temp: ____°F</h4>
+				            <h4>Wind: ____ mph</h4>
+                            <h4>Humidity: __%</h4>
+                        </li>
+                        <li class="card">
+                            <h3>(_____)</h3>
+				            <h4>Temp: ____°F</h4>
+                            <h4>Wind: ____ mph</h4>
+				            <h4>Humidity: __%</h4>
+                        </li>
+                        <li class="card">
+                            <h3>(_____)</h3>
+                            <h4>Temp: ____°F</h4>
+                            <h4>Wind: ____ mph</h4>
+                            <h4>Humidity: __%</h4>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>
