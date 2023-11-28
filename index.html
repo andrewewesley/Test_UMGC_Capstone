@@ -1,7 +1,13 @@
 <!--
-Matthew Hendrix / Andrew Wesley
+Matthew Hendrix/Andrew Wesley
 HTML Doc for Weather App Capstone
-CAO: 26 Nov 23
+CAO: 27 Nov 23
+
+Required info per OpenWeather needs to be visible on site
+------------------------------
+Weather data provided by OpenWeather
+https://openweathermap.org
+get image
 -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -13,24 +19,22 @@ CAO: 26 Nov 23
 		<script src="script.js" defer></script>
 	</head>
 	<body>
-        
-    	<label class="switch">
-        	<input type="checkbox" id="toggleTemperature">
-        	<span class="slider round"></span>
-        	<span class="label-c">°C</span>
-        	<span class="label-f">°F</span>
-    	</label>
-    	
-    	<div class="header">
-    		<input class="city-input" type="text" placeholder="Search for City">
-    		<button class="search-btn">
-        		<img src="./Search_icon.png" alt="Search Icon"/>
-    		</button>
-    		<button class="location-btn">
-        		<img src="./Location_Icon.png" alt="Location Icon"/>
-    		</button>
-		</div>
-
+        <div class="header">
+            <!-- toggle switch code provided by Andrew Wesley -->
+            <label class="switch">
+        	   <input type="checkbox" id="toggleTemperature">
+        	   <span class="slider round"></span>
+        	   <span class="label-c">°C</span>
+        	   <span class="label-f">°F</span>
+            </label>
+            <input class="city-input" type="text" placeholder="Search for City">
+            <button class="search-btn">
+                <img src="./Search_icon.png" alt="Search Icon"/>
+            </button>
+            <button class="location-btn">
+                <img src="./Location_Icon.png" alt="Location Icon"/>
+            </button>
+        </div>
 		<div class="container">
             <div class="left-column">
                 <div class="top-block">
@@ -39,55 +43,63 @@ CAO: 26 Nov 23
                 </div>
                 <div class="bottom-block">
                     <div class="bottom-details">
-                        <h4>Temp: ____°F</h4>
-                        <h4>Wind: ____ mph</h4>
+                        <h4>Temp: ____°C</h4>
+                        <h4>Wind: ____ M/S</h4>
                         <h4>Humidity: __%</h4>
                     </div>
                 </div>
             </div>
-
+            <div class="weather-data">
+                <div class="current-weather">
+                    <div class="details">
+                        <h2>_______ (_____)</h2>
+                        <h4>Temp: ____°C</h4>
+                        <h4>Wind: ____ M/S</h4>
+                        <h4>Humidity: __%</h4>
+                    </div>
+                </div>
                 <div class="days-forecast">
                     <h2>7-Day Forecast</h2>
                     <ul class="weather-cards">
                         <li class="card">
                             <h3>(_____)</h3>
-                            <h4>Temp: ____°F</h4>
-                            <h4>Wind: ____ mph</h4>
+                            <h4>Temp: ____°C</h4>
+                            <h4>Wind: ____ M/S</h4>
                             <h4>Humidity: __%</h4>
                         </li>
                         <li class="card">
                             <h3>(_____)</h3>
-                            <h4>Temp: ____°F</h4>
-                            <h4>Wind: ____ mph</h4>
+                            <h4>Temp: ____°C</h4>
+                            <h4>Wind: ____ M/S</h4>
                             <h4>Humidity: __%</h4>
                         </li>
                         <li class="card">
                             <h3>(_____)</h3>   
-                            <h4>Temp: ____°F</h4>
-                            <h4>Wind: ____ mph</h4>
+                            <h4>Temp: ____°C</h4>
+                            <h4>Wind: ____ M/S</h4>
                             <h4>Humidity: __%</h4>
                         </li>
                         <li class="card">
                             <h3>(_____)</h3>
-                            <h4>Temp: ____°F</h4>
-                            <h4>Wind: ____ mph</h4>
+                            <h4>Temp: ____°C</h4>
+                            <h4>Wind: ____ M/S</h4>
                             <h4>Humidity: __%</h4>
                         </li><li class="card">
                             <h3>(_____)</h3>
-                            <h4>Temp: ____°F</h4>
-				            <h4>Wind: ____ mph</h4>
+                            <h4>Temp: ____°C</h4>
+				            <h4>Wind: ____ M/S</h4>
                             <h4>Humidity: __%</h4>
                         </li>
                         <li class="card">
                             <h3>(_____)</h3>
-				            <h4>Temp: ____°F</h4>
-                            <h4>Wind: ____ mph</h4>
+				            <h4>Temp: ____°C</h4>
+                            <h4>Wind: ____ M/S</h4>
 				            <h4>Humidity: __%</h4>
                         </li>
                         <li class="card">
                             <h3>(_____)</h3>
-                            <h4>Temp: ____°F</h4>
-                            <h4>Wind: ____ mph</h4>
+                            <h4>Temp: ____°C</h4>
+                            <h4>Wind: ____ M/S</h4>
                             <h4>Humidity: __%</h4>
                         </li>
                     </ul>
