@@ -63,7 +63,6 @@ const getWeatherDetails = (cityName, lat, lon) => {
 
                 // Clears old data
                 cityInput.value = "";
-                currentWeatherDiv.innerHTML = "";
                 weatherCardsDiv.innerHTML = "";
 
                 sevenDaysForecast.forEach((weatherItem, index) => {
