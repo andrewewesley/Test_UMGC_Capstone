@@ -146,12 +146,12 @@ const getLocalCoordinates = () => {
 }
 
 const setCurrentWeatherCard = () => {
-    const weatherItem = currentWeatherData.list[0]; // Get the current weather item
+    const weatherItem = currentWeatherData.list[0];
 
-// Check if the current weather item is available
+    // Check if the current weather item is available
     if (weatherItem) {
         const bottomBlock = document.querySelector(".bottom-block");
-    
+
         // Update the HTML content of the bottom block
         bottomBlock.innerHTML = `
             <div class="bottom-details">
@@ -166,6 +166,7 @@ const setCurrentWeatherCard = () => {
         `;
     }
 };
+
 
 switchElement.addEventListener("change", () => {
     if (switchElement.checked) {
