@@ -24,11 +24,18 @@ let currentWindUnit = metricWind;
 const API_KEY = "6b75e1f27bd464fbc659aabb6312388f"; // OpenWeatherMap API key
 
 const createWeatherCard = (cityName, weatherItem, index) => {
+
+	const forecastDate = new Date(weatherItem.dt_txt).toLocaleDateString(undefined, {
+		weekday: 'short',
+        month: 'short',
+        day: 'numeric'
+    });
+    
     if (index === 0) {
         return " ";
     } else {
         return `<li class="card">
-                    <h3>(${weatherItem.dt_txt.split(" ")[0]})</h3>
+        			<h3>${forecastDate}</h3>
                     <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather-icon">
                     <h4>Temp: ${(weatherItem.main.temp).toFixed(2)}${currentTempUnit}</h4>
                     <h4>Wind: ${weatherItem.wind.speed}${currentWindUnit}</h4>
@@ -147,7 +154,11 @@ const getLocalCoordinates = () => {
 
 const setCurrentWeatherCard = () => {
     const weatherItem = currentWeatherData.list[0];
-
+	const currentDate = new Date(weatherItem.dt_txt).toLocaleDateString(undefined, {
+		weekday: 'short',
+		month: 'short',
+		day: 'numeric'
+        });
     // Check if the current weather item is available
     if (weatherItem) {
         const bottomBlock = document.querySelector(".bottom-block");
@@ -164,6 +175,7 @@ const setCurrentWeatherCard = () => {
                 <h4>${weatherItem.weather[0].description}</h4>
             </div>
         `;
+        document.getElementById('currentDate').textContent = currentDate;
     }
 };
 
