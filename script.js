@@ -24,25 +24,33 @@ if (typeof window !== 'undefined') {
 
     const API_KEY = "6b75e1f27bd464fbc659aabb6312388f"; // OpenWeatherMap API key
 
-    const createWeatherCard = (cityName, weatherItem, index) => {
-        const forecastDate = new Date(weatherItem.dt_txt).toLocaleDateString(undefined, {
-		  weekday: 'short',
-            month: 'short',
-            day: 'numeric'
-        });
-    
-        if (index === 0) {
-            return " ";
-        } else {
-            return `<li class="card">
-                        <h3>${forecastDate}</h3>
-                        <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png" alt="weather-icon">
-                        <h4>Temp: ${(weatherItem.main.temp).toFixed(2)}${currentTempUnit}</h4>
-                        <h4>Wind: ${weatherItem.wind.speed}${currentWindUnit}</h4>
-                        <h4>Humidity: ${weatherItem.main.humidity}%</h4>
-                    </li>`;
-        }
+const createWeatherCard = (cityName, weatherItem, index) => {
+    const forecastDate = new Date(weatherItem.dt_txt).toLocaleDateString(undefined, {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric'
+    });
+
+    // Function to replace 'n' with 'd' in the icon string
+    const replaceNightIcon = (icon) => {
+        return icon.replace('n', 'd');
+    };
+
+    if (index === 0) {
+        return " ";
+    } else {
+        // Replace 'n' with 'd' in the icon string
+        const dayIcon = replaceNightIcon(weatherItem.weather[0].icon);
+
+        return `<li class="card">
+                    <h3>${forecastDate}</h3>
+                    <img src="https://openweathermap.org/img/wn/${dayIcon}@2x.png" alt="weather-icon">
+                    <h4>Temp: ${(weatherItem.main.temp).toFixed(2)}${currentTempUnit}</h4>
+                    <h4>Wind: ${weatherItem.wind.speed}${currentWindUnit}</h4>
+                    <h4>Humidity: ${weatherItem.main.humidity}%</h4>
+                </li>`;
     }
+}
 
     const getWeatherDetails = (cityName, lat, lon) => {
         const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&${currentUnit}`;
@@ -140,34 +148,42 @@ if (typeof window !== 'undefined') {
     }
 
     const setCurrentWeatherCard = () => {
-        const weatherItem = currentWeatherData.list[0]; // Get the current weather item
-        const currentDate = new Date(weatherItem.dt_txt).toLocaleDateString(undefined, {
-		  weekday: 'short',
-		  month: 'short',
-		  day: 'numeric'
-        });
-    
-        // Check if the current weather item is available
-        if (weatherItem) {
-            const bottomBlock = document.querySelector(".bottom-block");
-    
-            // Update the HTML content of the bottom block
-            bottomBlock.innerHTML = `
-                <div class="bottom-details">
-                    <h4>Temperature: ${(weatherItem.main.temp).toFixed(2)}${currentTempUnit}</h4>
-                    <h4>High: ${(weatherItem.main.temp_max).toFixed(2)}${currentTempUnit}</h4>
-                    <h4>Low: ${(weatherItem.main.temp_min).toFixed(2)}${currentTempUnit}</h4>
-                    <h4>Wind: ${weatherItem.wind.speed}${currentWindUnit}</h4>
-                    <h4>Humidity: ${weatherItem.main.humidity}%</h4>
-                </div>
-                <div class="icon">
-                    <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
-                    <h4>${weatherItem.weather[0].description}</h4>
-                </div>
-            `;
-            document.getElementById('currentDate').textContent = currentDate;
-        }
-    };
+    	const weatherItem = currentWeatherData.list[0]; // Get the current weather item
+    	const currentDate = new Date(weatherItem.dt_txt).toLocaleDateString(undefined, {
+        	weekday: 'short',
+        	month: 'short',
+        	day: 'numeric'
+    	});
+
+    	// Function to replace 'n' with 'd' in the icon string
+    	const replaceNightIcon = (icon) => {
+        	return icon.replace('n', 'd');
+    	};
+
+    	// Replace 'n' with 'd' in the icon string for the current day forecast
+    	const dayIcon = replaceNightIcon(weatherItem.weather[0].icon);
+
+    	// Check if the current weather item is available
+    	if (weatherItem) {
+        	const bottomBlock = document.querySelector(".bottom-block");
+
+        	// Update the HTML content of the bottom block
+        	bottomBlock.innerHTML = `
+            	<div class="bottom-details">
+                	<h4>Temperature: ${(weatherItem.main.temp).toFixed(2)}${currentTempUnit}</h4>
+                	<h4>High: ${(weatherItem.main.temp_max).toFixed(2)}${currentTempUnit}</h4>
+                	<h4>Low: ${(weatherItem.main.temp_min).toFixed(2)}${currentTempUnit}</h4>
+                	<h4>Wind: ${weatherItem.wind.speed}${currentWindUnit}</h4>
+                	<h4>Humidity: ${weatherItem.main.humidity}%</h4>
+            	</div>
+            	<div class="icon">
+                	<img src="https://openweathermap.org/img/wn/${dayIcon}@4x.png" alt="weather-icon">
+                	<h4>${weatherItem.weather[0].description}</h4>
+            	</div>
+        	`;
+        	document.getElementById('currentDate').textContent = currentDate;
+    	}
+	};
 
     switchElement.addEventListener("change", () => {
         if (switchElement.checked) {
